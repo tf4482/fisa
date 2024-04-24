@@ -31,7 +31,6 @@ class AdminPanelProvider extends PanelProvider
         ->passwordReset()
         ->emailVerification()
         ->profile(isSimple: false)
-        ->topNavigation()
         ->brandName('Fully Integrated System Assistant (FISA)')
         ->colors([
             'primary' => Color::Violet,

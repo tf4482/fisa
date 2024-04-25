@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->ForeignUuid('device_id')->constrained();
             $table->ForeignUuid('operating_system_id')->constrained();
+            $table->boolean('status')->default(false)->nullable();
             $table->timestamps();
         });
     }

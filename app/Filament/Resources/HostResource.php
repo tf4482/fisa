@@ -46,11 +46,13 @@ class HostResource extends Resource
 
                 Forms\Components\BelongsToSelect::make('device_id')
                     ->label('Device')
+                    ->required()
                     ->relationship('device', 'model')
                     ->placeholder(__('Select the device of the host')),
 
                 Forms\Components\BelongsToSelect::make('operating_system_id')
                     ->label('Operating System')
+                    ->required()
                     ->relationship('operatingSystem', 'system')
                     ->placeholder(__('Select the operating system of the host')),
             ]);

@@ -2,15 +2,10 @@
 
 namespace App\Filament\Resources\DeviceResource\Pages;
 
+use App\Filament\Resources\BaseCreateRecord;
 use App\Filament\Resources\DeviceResource;
-use Filament\Resources\Pages\CreateRecord;
 
-class CreateDevice extends CreateRecord
+class CreateDevice extends BaseCreateRecord
 {
     protected static string $resource = DeviceResource::class;
-
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
 }

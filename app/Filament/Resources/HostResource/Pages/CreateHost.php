@@ -2,15 +2,10 @@
 
 namespace App\Filament\Resources\HostResource\Pages;
 
+use App\Filament\Resources\BaseCreateRecord;
 use App\Filament\Resources\HostResource;
-use Filament\Resources\Pages\CreateRecord;
 
-class CreateHost extends CreateRecord
+class CreateHost extends BaseCreateRecord
 {
     protected static string $resource = HostResource::class;
-
-    protected function getRedirectUrl(): string
-    {
-        return $this->getResource()::getUrl('index');
-    }
 }

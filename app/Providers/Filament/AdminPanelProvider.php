@@ -9,13 +9,14 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use Filament\Widgets;
+use Filament\Support\Facades\FilamentView;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
@@ -23,22 +24,22 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-        ->default()
-        ->id('admin')
-        ->path('panel')
-        ->login()
-        ->registration()
-        ->passwordReset()
-        ->emailVerification()
-        ->profile(isSimple: false)
-        ->brandName('Fully Integrated System Assistant (FISA)')
-        ->colors([
-            'primary' => Color::Violet,
-        ])
+            ->default()
+            ->id('admin')
+            ->path('panel')
+            ->login()
+            ->registration()
+            ->passwordReset()
+            ->emailVerification()
+            ->profile(isSimple: false)
+            ->brandName('Fully Integrated System Assistant (FISA)')
+            ->colors([
+                'primary' => Color::Violet,
+            ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                // Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
@@ -57,5 +58,11 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
+    }
+
+    public function register(): void
+    {
+        parent::register();
+        FilamentView::registerRenderHook('panels::body.end', fn (): string => Blade::render("@vite('resources/js/app.js')"));
     }
 }

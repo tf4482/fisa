@@ -1,6 +1,7 @@
 # FISA (Fully Integrated System Assistant) 🚀
 
 ## About The Project 📚
+
 FISA is a hobby project aimed at developing a user-friendly web application for monitoring and controlling IOT and other devices. The project is still a work in progress, constantly being improved and expanded.
 
 ## Planned Features 🚀
@@ -22,12 +23,17 @@ Also Node-RED, some shell scripts (bash mainly) and some other baseline os utili
 ## Installation 💾
 
 Clone the repository:
-bash
-Copy code
 git clone https://github.com/tf4482/fisa.git
 
 ## License 📜
 
 Distributed under the MIT License. See LICENSE for more information.
 
+
+
+
 Project Link: https://github.com/tf4482/fisa
+
+
+![gnp](https://github.com/tf4482/fisa/assets/107394980/dad91739-bc66-44d9-8692-7b4bb08e61a3)
+

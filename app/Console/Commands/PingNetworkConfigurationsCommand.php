@@ -12,6 +12,8 @@ class PingNetworkConfigurationsCommand extends Command
 
     protected $description = 'Ping all IP addresses in network configurations and update host status';
 
+    protected string $pingResult;
+
     public function handle()
     {
         $networkConfigurations = NetworkConfiguration::all();
@@ -20,7 +22,6 @@ class PingNetworkConfigurationsCommand extends Command
             if ($networkConfiguration->pingcheck) {
                 $ipAddress = $networkConfiguration->ip_address;
                 $pingResult = $this->ping($ipAddress);
-
                 $host = Host::find($networkConfiguration->host_id);
 
                 if ($host) {
@@ -31,7 +32,7 @@ class PingNetworkConfigurationsCommand extends Command
         }
     }
 
-    public function ping($ipAddress)
+    public function ping($ipAddress): string
     {
         $isWindows = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN';
 
@@ -43,8 +44,6 @@ class PingNetworkConfigurationsCommand extends Command
             $reachable = strpos($response, '1 received') !== false;
         }
 
-        $this->info($reachable ? 'true' : 'false');
-
-        return $reachable;
+        return $response ? 'online' : 'offline';
     }
 }

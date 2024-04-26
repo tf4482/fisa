@@ -16,6 +16,7 @@ class Host extends Model
         'username',
         'device_id',
         'operating_system_id',
+        'status',
     ];
 
     public function device()

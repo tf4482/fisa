@@ -2,7 +2,7 @@
 
 ## About The Project 📚
 
-FISA is a hobby project aimed at developing a user-friendly web application for monitoring and controlling IOT and other devices. The project is still a work in progress, constantly being improved and expanded.
+FISA is a hobby project aimed at developing a user-friendly web application for monitoring and controlling IOT and other (network) devices. The project is still a work in progress, constantly being improved and expanded.
 
 ## Planned Features 🚀
 
@@ -17,7 +17,7 @@ As this project is a hobby project, contributions, bug reports, and feature requ
 
 ## Technology Stack 🖥️
 
-This application is being developed mainly using Laravel Filament, a powerful Framwork panel for Laravel applications. It facilitates the creation of CRUD interfaces and ensures a clean and maintainable codebase.
+This application is being developed mainly using Laravel Filament, a powerful Framwork panel for Laravel applications. It facilitates the creation of CRUD interface elements and ensures a clean and maintainable codebase.
 Also Node-RED, some shell scripts (bash mainly) and some other baseline os utilities, aswell as some proprietary vendor software will be used to achieve the desired functionality.
 
 ## Installation 💾

@@ -6,7 +6,6 @@ use App\Filament\ResourceExtension;
 use App\Filament\Resources\HostsResource\Pages;
 use App\Models\Hosts;
 use Filament\Forms\Form;
-use Filament\Tables;
 use Filament\Tables\Table;
 
 class HostsResource extends ResourceExtension
@@ -15,31 +14,47 @@ class HostsResource extends ResourceExtension
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getModelLabel(): string
+    {
+        return __('Host');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Hosts');
+    }
+
+    public static function getNavigationGroup(): string
+    {
+        return __('Main');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
-            ]);
+                self::textInputGeneric('name', 'Hostname', true),
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                self::textColumnGeneric('name', 'Hostname'),
+                self::textColumnGeneric('status', 'Status'),
             ])
+            ->persistSortInSession()
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                //
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                //
+            ])
+            ->defaultSort('name', 'asc');
     }
 
     public static function getRelations(): array

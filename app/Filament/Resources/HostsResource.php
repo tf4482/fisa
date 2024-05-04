@@ -2,18 +2,14 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\ResourceExtension;
 use App\Filament\Resources\HostsResource\Pages;
-use App\Filament\Resources\HostsResource\RelationManagers;
 use App\Models\Hosts;
-use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class HostsResource extends Resource
+class HostsResource extends ResourceExtension
 {
     protected static ?string $model = Hosts::class;
 

@@ -2,11 +2,11 @@
 
 namespace App\Filament\Resources\HostsResource\Pages;
 
+use App\Filament\EditRecordExtension;
 use App\Filament\Resources\HostsResource;
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
 
-class EditHosts extends EditRecord
+class EditHosts extends EditRecordExtension
 {
     protected static string $resource = HostsResource::class;
 

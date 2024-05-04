@@ -2,11 +2,11 @@
 
 namespace App\Filament\Resources\HostsResource\Pages;
 
+use App\Filament\ListRecordsExtension;
 use App\Filament\Resources\HostsResource;
 use Filament\Actions;
-use Filament\Resources\Pages\ListRecords;
 
-class ListHosts extends ListRecords
+class ListHosts extends ListRecordsExtension
 {
     protected static string $resource = HostsResource::class;
 

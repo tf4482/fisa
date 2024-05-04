@@ -13,11 +13,25 @@ return new class extends Migration
     {
         Schema::create('hosts', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('hostname')->required()->unique();
+            $table->string('name')->required()->unique();
+            $table->string('status')->required();
+            $table->ipAddress('ip')->unique();
+            $table->ipAddress('ip_pub')->nullable();
+            $table->integer('port')->nullable();
+            $table->integer('port_pub')->nullable();
+            $table->string('mac')->unique();
             $table->string('username')->nullable();
-            $table->ForeignUuid('device_id')->constrained();
-            $table->ForeignUuid('operating_system_id')->constrained();
-            $table->string('status')->default('offline');
+            $table->string('type')->enum(
+                'device_type', [
+                    'minipc',
+                    'desktop',
+                    'laptop',
+                    'tablet',
+                    'smartphone',
+                    'smartwatch',
+                    'other',
+                ])->nullable;
+            $table->integer('check')->nullable();
             $table->timestamps();
         });
     }

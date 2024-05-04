@@ -12,10 +12,10 @@ class Hosts extends Model
     use HasUuids;
 
     protected $fillable = [
-        'hostname',
-        'username',
-        'device_id',
-        'operating_system_id',
+        'name',
         'status',
+        'ip',
+        'mac',
+        'type',
     ];
 }

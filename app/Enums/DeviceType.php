@@ -6,7 +6,7 @@ use Filament\Support\Contracts\HasLabel;
 
 enum DeviceType: string implements HasLabel
 {
-    case Minipc = 'Minipc';
+    case Minipc = 'Mini PC';
     case Desktop = 'Desktop';
     case Laptop = 'Laptop';
     case Tablet = 'Tablet';

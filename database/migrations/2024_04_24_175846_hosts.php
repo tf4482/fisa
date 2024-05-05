@@ -19,7 +19,7 @@ return new class extends Migration
             $table->ipAddress('ip_pub')->nullable();
             $table->integer('port')->nullable();
             $table->integer('port_pub')->nullable();
-            $table->string('mac')->unique();
+            $table->string('mac')->unique()->nullable();
             $table->string('username')->nullable();
             $table->string('type')->enum(
                 'device_type', [
@@ -30,7 +30,7 @@ return new class extends Migration
                     'smartphone',
                     'smartwatch',
                     'other',
-                ])->nullable;
+                ])->default('other');
             $table->integer('check')->nullable();
             $table->timestamps();
         });

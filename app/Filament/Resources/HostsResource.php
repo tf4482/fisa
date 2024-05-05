@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\DeviceType;
 use App\Filament\ResourceExtension;
 use App\Filament\Resources\HostsResource\Pages;
 use App\Models\Hosts;
+use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 
@@ -26,7 +28,7 @@ class HostsResource extends ResourceExtension
 
     public static function getNavigationGroup(): string
     {
-        return __('Main');
+        return __('Configuration');
     }
 
     public static function form(Form $form): Form
@@ -34,7 +36,14 @@ class HostsResource extends ResourceExtension
         return $form
             ->schema([
                 self::textInputGeneric('name', 'Hostname', true),
-            ])->columns(1);
+                self::textInputGeneric('status', 'Status', true),
+                self::textInputGeneric('ip', 'IP adress', true),
+                self::textInputGeneric('mac', 'MAC adress'),
+                Forms\Components\Select::make('type')
+                    ->label(__('Device type'))
+                    ->options(DeviceType::class)
+                    ->default(DeviceType::Other),
+            ])->columns(2);
     }
 
     public static function table(Table $table): Table
@@ -43,6 +52,9 @@ class HostsResource extends ResourceExtension
             ->columns([
                 self::textColumnGeneric('name', 'Hostname'),
                 self::textColumnGeneric('status', 'Status'),
+                self::textColumnGeneric('ip', 'IP adress'),
+                self::textColumnGeneric('mac', 'MAC adress'),
+                self::textColumnGeneric('type', 'Device type'),
             ])
             ->persistSortInSession()
             ->filters([

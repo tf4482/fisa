@@ -21,17 +21,9 @@ return new class extends Migration
             $table->integer('port_pub')->nullable();
             $table->string('mac')->unique()->nullable();
             $table->string('username')->nullable();
-            $table->string('type')->enum(
-                'device_type', [
-                    'minipc',
-                    'desktop',
-                    'laptop',
-                    'tablet',
-                    'smartphone',
-                    'smartwatch',
-                    'other',
-                ])->default('other');
-            $table->integer('check')->nullable();
+            $table->string('type')->nullable()->default('other');
+            $table->integer('inspect')->nullable();
+            $table->datetime('last_check')->nullable();
             $table->timestamps();
         });
     }

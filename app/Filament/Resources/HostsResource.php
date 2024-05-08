@@ -36,7 +36,6 @@ class HostsResource extends ResourceExtension
         return $form
             ->schema([
                 self::textInputGeneric('name', 'Hostname', true),
-                self::textInputGeneric('status', 'Status', true),
                 self::textInputGeneric('ip', 'IP adress', true),
                 self::textInputGeneric('mac', 'MAC adress'),
                 Forms\Components\Select::make('type')

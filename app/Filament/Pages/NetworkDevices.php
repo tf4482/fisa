@@ -5,22 +5,22 @@ namespace App\Filament\Pages;
 use App\Models\Hosts;
 use Filament\Pages\Page;
 
-class Overview extends Page
+class NetworkDevices extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string $view = 'filament.pages.overview';
+    protected static string $view = 'filament.pages.network-devices';
 
     public $hosts;
 
     public function getTitle(): string
     {
-        return __('Overview');
+        return __('Network devices');
     }
 
     public static function getNavigationLabel(): string
     {
-        return __('Overview');
+        return __('Network devices');
     }
 
     public function mount(): void

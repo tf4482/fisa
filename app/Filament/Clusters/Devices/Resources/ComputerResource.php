@@ -5,13 +5,14 @@ namespace App\Filament\Clusters\Devices\Resources;
 use App\Filament\Clusters\Devices;
 use App\Filament\Clusters\Devices\Resources\ComputerResource\Pages;
 use App\Filament\Extend\ResourceExtension;
+use App\Models\Computer;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 
 class ComputerResource extends ResourceExtension
 {
-    protected static ?string $model = Hosts::class;
+    protected static ?string $model = Computer::class;
 
     protected static ?string $cluster = Devices::class;
 
@@ -19,12 +20,12 @@ class ComputerResource extends ResourceExtension
 
     public static function getModelLabel(): string
     {
-        return __('Overview');
+        return __('Computer');
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __('Overviews');
+        return __('Computers');
     }
 
     public static function form(Form $form): Form

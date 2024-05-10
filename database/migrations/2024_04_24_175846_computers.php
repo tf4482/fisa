@@ -11,17 +11,28 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hosts', function (Blueprint $table) {
+        Schema::create('computers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->required()->unique();
             $table->string('status')->required();
             $table->ipAddress('ip')->unique();
-            $table->ipAddress('ip_pub')->nullable();
+            $table->string('ip_pub')->nullable();
             $table->integer('port')->nullable();
-            $table->integer('port_pub')->nullable();
+            $table->string('port_pub')->nullable();
             $table->string('mac')->unique()->nullable();
             $table->string('username')->nullable();
-            $table->string('type')->nullable()->default('other');
+            $table->string('type')->enum(
+                'device_type', [
+                    'minipc',
+                    'desktop',
+                    'laptop',
+                    'tablet',
+                    'smartphone',
+                    'smartwatch',
+                    'other',
+                ])->default('other')
+                ->default('other');
+            $table->string('avatar')->nullable();
             $table->integer('inspect')->nullable();
             $table->datetime('last_check')->nullable();
             $table->timestamps();

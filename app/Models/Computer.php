@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ComputerType;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,6 +14,7 @@ class Computer extends Model
 
     protected $casts = [
         'inspect' => 'boolean',
+        'type' => ComputerType::class,
     ];
 
     protected $fillable = [
@@ -20,9 +22,9 @@ class Computer extends Model
         'status',
         'ip',
         'mac',
-        'type',
         'avatar',
         'inspect',
         'last_check',
+        'type',
     ];
 }

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -35,8 +36,9 @@ class AdminPanelProvider extends PanelProvider
             ->topNavigation()
             ->brandName('Fully Integrated System Assistant (FISA)')
             ->colors([
-                'primary' => Color::Violet,
+                'primary' => Color::Emerald,
             ])
+            ->font('Product Sans')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->discoverClusters(in: app_path('Filament/Clusters'), for: 'App\\Filament\\Clusters')
@@ -59,7 +61,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->defaultThemeMode(ThemeMode::Dark)
+            ->databaseTransactions();
     }
 
     public function register(): void

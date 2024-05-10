@@ -82,13 +82,15 @@ class ComputerResource extends ResourceExtension
                             'offline' => 'danger',
                             default => $record->inspect ? 'warning' : 'default',
                         }),
-                self::textColumnGeneric('ip', 'IP address'),
+                self::textColumnGeneric('ip', 'IP address')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 self::textColumnGeneric('mac', 'MAC address')
                     ->placeholder('Unknown')
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('type'),
                 self::textColumnGeneric('type', 'Type'),
-                self::textColumnGeneric('last_check', 'Last check'),
+                self::textColumnGeneric('last_check', 'Last check')
+                    ->time(),
                 ToggleColumn::make('inspect')
                     ->label(__('Check')),
             ])

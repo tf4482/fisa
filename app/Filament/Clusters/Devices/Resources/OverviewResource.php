@@ -14,9 +14,9 @@ class OverviewResource extends Resource
 {
     protected static ?string $model = Overview::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     protected static ?string $cluster = Devices::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {

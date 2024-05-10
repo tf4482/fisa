@@ -2,6 +2,7 @@
 
 namespace App\Filament\Clusters\Devices\Resources;
 
+use App\Filament\Clusters\Devices;
 use App\Filament\Clusters\Devices\Resources\ComputerResource\Pages;
 use App\Filament\Extend\ResourceExtension;
 use Filament\Forms;
@@ -11,6 +12,8 @@ use Filament\Tables\Table;
 class ComputerResource extends ResourceExtension
 {
     protected static ?string $model = Hosts::class;
+
+    protected static ?string $cluster = Devices::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

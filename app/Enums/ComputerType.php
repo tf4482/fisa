@@ -6,24 +6,24 @@ use Filament\Support\Contracts\HasLabel;
 
 enum ComputerType: string implements HasLabel
 {
-    case MiniPC = 'Mini PC';
-    case Desktop = 'Desktop';
-    case Laptop = 'Laptop';
-    case Tablet = 'Tablet';
-    case Virtualmachine = 'Virtual machine';
-    case Clouddevice = 'Cloud device';
-    case Other = 'Other';
+    case minipc = 'minipc';
+    case desktop = 'desktop';
+    case laptop = 'laptop';
+    case tablet = 'tablet';
+    case virtualmachine = 'virtualmachine';
+    case clouddevice = 'clouddevice';
+    case other = 'other';
 
     public function getLabel(): string
     {
         return match ($this) {
-            ComputerType::MiniPC => __('Mini PC'),
-            ComputerType::Desktop => __('Desktop'),
-            ComputerType::Laptop => __('Laptop'),
-            ComputerType::Tablet => __('Tablet'),
-            ComputerType::Virtualmachine => __('Virtual machine'),
-            ComputerType::Clouddevice => __('Cloud device'),
-            ComputerType::Other => __('Other'),
+            self::minipc => __('Mini PC'),
+            self::desktop => __('Desktop'),
+            self::laptop => __('Laptop'),
+            self::tablet => __('Tablet'),
+            self::virtualmachine => __('Virtual Machine'),
+            self::clouddevice => __('Cloud Device'),
+            self::other => __('Other'),
         };
     }
 }

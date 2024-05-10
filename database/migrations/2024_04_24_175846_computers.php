@@ -21,17 +21,15 @@ return new class extends Migration
             $table->string('port_pub')->nullable();
             $table->string('mac')->unique()->nullable();
             $table->string('username')->nullable();
-            $table->string('type')->enum(
-                'device_type', [
-                    'minipc',
-                    'desktop',
-                    'laptop',
-                    'tablet',
-                    'smartphone',
-                    'smartwatch',
-                    'other',
-                ])->default('other')
-                ->default('other');
+            $table->enum('type', [
+                'minipc',
+                'desktop',
+                'laptop',
+                'tablet',
+                'virtualmachine',
+                'clouddevice',
+                'other',
+            ])->nullable()->default('other');
             $table->string('avatar')->nullable();
             $table->integer('inspect')->nullable();
             $table->datetime('last_check')->nullable();
@@ -44,6 +42,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('hosts');
+        Schema::dropIfExists('computers');
     }
 };

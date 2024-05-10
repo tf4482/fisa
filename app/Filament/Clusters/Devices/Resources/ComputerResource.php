@@ -42,15 +42,16 @@ class ComputerResource extends ResourceExtension
                     self::textInputGeneric('ip', 'IP address', true)
                         ->rules('ipv4'),
                     self::textInputGeneric('mac', 'MAC address')
-                        ->rules('nullable',
-                            'unique:network_devices,mac')
+                        ->rules('nullable', 'unique:network_devices,mac')
                         ->rules('mac_address'),
                     Forms\Components\Select::make('type')
                         ->label(__('Type'))
-                        ->options(array_map(function ($type) {
-                            return $type->value;
-                        }, ComputerType::cases()))
-                        ->default(ComputerType::Other->value)
+                        ->options(array_reduce(ComputerType::cases(), function ($result, $type) {
+                            $result[$type->value] = $type->getLabel();
+
+                            return $result;
+                        }, []))
+                        ->default(ComputerType::other->value)
                         ->rules('required'),
                     Forms\Components\FileUpload::make('avatar')
                         ->disk('public')
@@ -75,14 +76,14 @@ class ComputerResource extends ResourceExtension
                 self::textColumnGeneric('name', 'Computer'),
                 self::textColumnGeneric('status', 'Status')
                     ->badge()
-                    ->color(fn (string $state, $record): string => match ($state) {
-                        'online' => 'success',
-                        'offline' => 'danger',
-                        default => $record->inspect ? 'warning' : 'default',
-                    }),
+                    ->color(fn (string $state,
+                        $record): string => match ($state) {
+                            'online' => 'success',
+                            'offline' => 'danger',
+                            default => $record->inspect ? 'warning' : 'default',
+                        }),
                 self::textColumnGeneric('ip', 'IP address'),
-                self::textColumnGeneric('mac',
-                    'MAC address')
+                self::textColumnGeneric('mac', 'MAC address')
                     ->placeholder('Unknown')
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('type'),
@@ -94,8 +95,7 @@ class ComputerResource extends ResourceExtension
             ->persistSortInSession()
             ->filters([//
             ])
-            ->actions([
-                //
+            ->actions([//
             ])
             ->bulkActions([//
             ])
